@@ -54,7 +54,6 @@ const testWork = computed ({
   set: (newValue) => {
     person.job = newValue
     jobsArr.push(person.job.split(','));
-    console.log(jobsArr)
   }
  
 });
