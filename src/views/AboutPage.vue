@@ -8,8 +8,19 @@
     <label class="percon-info">Возраст<input v-model="person.age"></label>
     <label class="percon-info">Пол<input v-model="person.sex"></label>
   </div>
-  <textarea class="textarea" placeholder="Введите места работы" v-model="testWork"></textarea>
-    <table class="spreadsheet-wrapper">
+  <div class="wrapper-list-job">
+    <textarea 
+    class="textarea" 
+    placeholder="Введите места работы" 
+    v-model="creatListJob">
+  </textarea>
+  <ul>Список профессий
+    <li v-for="(jobName, index) in jobsArr" :key="index">
+      Профессия {{ index + 1 }}: {{ jobName }}
+    </li>
+  </ul>
+  </div>
+  <table class="spreadsheet-wrapper">
       <tr class="line-row">
         <td class="line-column">ФИО</td>
         <td class="line-column">Возраст</td>
@@ -28,7 +39,7 @@
 </template>
 
 <script setup>
-import { reactive, computed, ref } from 'vue';
+import { reactive, computed } from 'vue';
 const person = reactive ({
   name: {
     surname: 'Pekhteleva',
@@ -43,20 +54,22 @@ const fioField = computed (() => {
   return Object.values(person.name).join(' ');
 });
 
-const jobsArr = [];
+const jobsArr = reactive([])
 person.job = '';
 
-const testWork = computed ({
+const creatListJob = computed ({
   get: () => { 
    return person.job 
   },
 
   set: (newValue) => {
     person.job = newValue
-    jobsArr.push(person.job.split(','));
-  }
+    if (newValue.at(-1) === ',') {
+        jobsArr.push(newValue.split(',').at(-2))
+  }},
  
 });
+
 </script>
 
 <style scoped>
@@ -76,6 +89,9 @@ const testWork = computed ({
   width: 400px;
   height: 100px;
   margin: 15px;
+}
+.wrapper-list-job {
+  display: flex;
 }
 .line-row {
   border: 1px solid rgb(0, 0, 0);
