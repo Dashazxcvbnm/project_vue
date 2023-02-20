@@ -22,7 +22,7 @@ import { computed } from 'vue';
 
 const universalPerson = defineProps({
     name: Object,
-    age: Number,
+    age: String,
     sex: String,
     job: String
 })
