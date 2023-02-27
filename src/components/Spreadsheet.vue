@@ -20,15 +20,20 @@
 <script setup>
 import { computed } from 'vue';
 
-const universalPerson = defineProps({
-    name: Object,
+const props = defineProps({
+  name: {
+    surname: String,
+    name: String,
+    patronymic: String,
+  },
     age: String,
     sex: String,
     job: String
 })
 
 const fioField = computed (() => {
-  return Object.values(universalPerson.name).join(' ');
+  const arr = Object.values(props.name)
+  return arr.join(' ')
 });
 
 </script>
