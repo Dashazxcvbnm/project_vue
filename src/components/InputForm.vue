@@ -1,35 +1,25 @@
 <template>
 <div>
     <form class="form" @submit.prevent>
-        <label class="percon-info">
-          Фамилия:<br>
-          <input 
-          v-model="draftPerson.surname"/>
-        </label>
+        <InputItem
+        title="Фамилия"
+        v-model="draftPerson.surname"/>
 
-        <label class="percon-info">
-          Имя:<br>
-          <input 
-          v-model="draftPerson.name"/>
-        </label>
+        <InputItem
+        title="Имя"
+        v-model="draftPerson.name"/>
 
-        <label class="percon-info">
-          Отчество:<br>
-          <input 
-          v-model="draftPerson.patronymic"/>
-        </label>
+        <InputItem
+        title="Отчество"
+        v-model="draftPerson.patronymic"/>
 
-        <label class="percon-info">
-          Возраст:<br>
-          <input 
-          v-model="draftPerson.age"/>
-        </label>
+        <InputItem
+        title="Возраст"
+        v-model="draftPerson.age"/>
 
-        <label class="percon-info">
-          Пол:<br>
-          <input 
-          v-model="draftPerson.sex"/>
-        </label>
+        <InputItem
+        title="Пол"
+        v-model="draftPerson.sex"/>
 
         <button 
         class="form-btn" 
@@ -40,6 +30,7 @@
 
 <script setup>
 import { reactive } from 'vue';
+import InputItem from '../components/GUI/InputItem.vue';
 
 const prop = defineProps({
   personData: Object,
