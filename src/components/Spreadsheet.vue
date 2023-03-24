@@ -9,9 +9,9 @@
       </tr>
       <tr class="line-row">
         <td class="line-column">{{ fioField }}</td>
-        <td class="line-column">{{ age }}</td>
-        <td class="line-column">{{ sex }}</td>
-        <td class="line-column">{{ job }}</td>
+        <td class="line-column">{{ person.age }}</td>
+        <td class="line-column">{{ person.sex }}</td>
+        <td class="line-column">{{ person.job }}</td>
       </tr>
     </table>
 </div>
@@ -21,18 +21,11 @@
 import { computed } from 'vue';
 
 const props = defineProps({
-  name: {
-    surname: String,
-    name: String,
-    patronymic: String,
-  },
-    age: String,
-    sex: String,
-    job: String
+  person: Object
 })
 
 const fioField = computed (() => {
-  const arr = Object.values(props.name)
+  const arr = Object.values(props.person.name)
   return arr.join(' ')
 });
 

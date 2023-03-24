@@ -3,15 +3,15 @@
     <form class="form" @submit.prevent>
         <InputItem
         title="Фамилия"
-        v-model="draftPerson.surname"/>
+        v-model="draftPerson.name.surname"/>
 
         <InputItem
         title="Имя"
-        v-model="draftPerson.name"/>
+        v-model="draftPerson.name.name"/>
 
         <InputItem
         title="Отчество"
-        v-model="draftPerson.patronymic"/>
+        v-model="draftPerson.name.patronymic"/>
 
         <InputItem
         title="Возраст"
@@ -29,17 +29,19 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import InputItem from '../components/GUI/InputItem.vue';
 
-const prop = defineProps({
+const props = defineProps({
   personData: Object,
 });
 
 const draftPerson = reactive({
-  surname: '',
-  name: '',
-  patronymic: '',
+  name: {
+    surname: '',
+    name: '',
+    patronymic: '',
+  },
   age: '',
   sex: ''
 })
