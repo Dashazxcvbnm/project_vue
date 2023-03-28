@@ -14,21 +14,21 @@
 
 <script setup>
 
-const prop = defineProps(['modelValue', 'title']);
+const props = defineProps(['modelValue', 'title']);
 const emits = defineEmits(['update:modelValue']);
 
 </script>
 
-<style>
+<style scoped>
 
 .input-form {
-    margin: 10px;
+    margin: 10px auto;
     padding: 10px;
     border: 0;
     box-shadow: 5px 5px 10px 6px rgba(0, 0, 0, 0.3);
     border-radius: 15px;
     outline: none;
-    width: 250px;
+    width: 30%;
 }
 
 .label-name {
